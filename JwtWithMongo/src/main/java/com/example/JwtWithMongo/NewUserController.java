@@ -26,9 +26,9 @@ public class NewUserController {
 
         if (userInDb.isPresent()) {
             Users existingUser = userInDb.get();
-            existingUser.setUsername(user.getUsername()); // Assuming the user entity has a setUsername method
-            existingUser.setPassword(user.getPassword()); // Make sure password is encrypted
-            userService.register(existingUser); // Save the updated user
+            existingUser.setUsername(user.getUsername()); 
+            existingUser.setPassword(user.getPassword()); 
+            userService.register(existingUser); 
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
 
