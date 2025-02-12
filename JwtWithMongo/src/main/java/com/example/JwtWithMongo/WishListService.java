@@ -23,29 +23,24 @@ public class WishListService {
     private UserRepo userRepository;
 
     public void addProductToWishList(int productId, String username) {
-        // Fetch the product by productId
+        
         Product product = productRepository.findByProdId(productId).orElse(null);
         if (product == null) {
             throw new RuntimeException("Product not found");
         }
 
-        // Fetch the user
+        
         Users user = userRepository.findByUsername(username);
         if (user != null) {
-            // Fetch or create the user's wishlist
+            
             WishList wishList;
             if (user.getWishLists() != null && !user.getWishLists().isEmpty()) {
-                wishList = user.getWishLists().get(0); // Assuming the user has only one wishlist
+                wishList = user.getWishLists().get(0); 
             } else {
-                // Create a new wishlist and assign a random ID
                 wishList = new WishList();
                 wishList.setProducts(new ArrayList<>());
-
-
-                int randomId = new Random().nextInt(1_000_000); // Example range: 0 to 999999
+                int randomId = new Random().nextInt(1_000_000); 
                 wishList.setRandomId(randomId);
-
-
                 user.setWishLists(Collections.singletonList(wishList));
             }
 
@@ -53,8 +48,6 @@ public class WishListService {
             if (!wishList.getProducts().contains(product)) {
                 wishList.getProducts().add(product);
             }
-
-
             wishListRepository.save(wishList);
             userRepository.save(user);
         }
@@ -62,23 +55,14 @@ public class WishListService {
 
 
     public List<Product> getWishListProducts(String username) {
-        // Fetch the user by username
         Users user = userRepository.findByUsername(username);
-
-        // Get the user's wishlist
         List<WishList> userWishlist = user.getWishLists();
-
-        // Check if the user has any wish lists
         if (userWishlist == null || userWishlist.isEmpty()) {
-            return new ArrayList<>(); // Return an empty list if no wishlists
+            return new ArrayList<>(); 
         }
-
-        // Collect all products from the user's wishlist (assumes WishList has a list of Product objects)
         Set<Product> userWishListProducts = userWishlist.stream()
-                .flatMap(wishList -> wishList.getProducts().stream()) // Get all products from each wishlist
-                .collect(Collectors.toSet()); // Collect to a set to avoid duplicates
-
-        // Return the list of products
+                .flatMap(wishList -> wishList.getProducts().stream()) 
+                .collect(Collectors.toSet()); 
         return new ArrayList<>(userWishListProducts);
     }
 
@@ -87,8 +71,6 @@ public class WishListService {
                 .orElseThrow(() -> new RuntimeException("Wishlist not found"));
 
         List<Product> products = wishList.getProducts();
-
-        // Convert the String productId to int
         int prodId = Integer.parseInt(productId);
 
         Product productToRemove = products.stream()
