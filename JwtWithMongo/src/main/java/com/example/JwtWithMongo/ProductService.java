@@ -33,7 +33,7 @@ public class ProductService {
         Users user = userRepo.findByUsername(username);
         if (user != null) {
             user.getProducts().add(savedProduct); // Assuming getProducts() returns a List<Product>
-            userRepo.save(user); // Save the updated user
+            userRepo.save(user); 
         }
     }
 
@@ -72,7 +72,7 @@ public class ProductService {
         Users user = userRepo.findByUsername(username);
         if (user != null && user.getProducts().stream().anyMatch(p -> p.getProdId() == prodId)) {
 
-            List<Users> usersWithProduct = userRepo.findByProductsContains(product);  // Custom query method
+            List<Users> usersWithProduct = userRepo.findByProductsContains(product);  
 
             for (Users userWithProduct : usersWithProduct) {
                 userWithProduct.getProducts().removeIf(p -> p.getProdId() == product.getProdId());
@@ -98,13 +98,13 @@ public class ProductService {
 
 
         Set<Integer> userProductIds = userProducts.stream()
-                .map(Product::getProdId) // Assuming `getId()` returns a unique identifier for the product
+                .map(Product::getProdId) 
                 .collect(Collectors.toSet());
 
 
         List<Product> allProducts = repo.findAll();
         return allProducts.stream()
-                .filter(product -> !userProductIds.contains(product.getProdId())) // Filter based on product IDs
+                .filter(product -> !userProductIds.contains(product.getProdId())) 
                 .collect(Collectors.toList());
     }
 
@@ -139,7 +139,7 @@ public class ProductService {
 
 
         return categoryProducts.stream()
-                .filter(product -> !userProductIds.contains(product.getProdId())) // Exclude user's products
+                .filter(product -> !userProductIds.contains(product.getProdId())) 
                 .collect(Collectors.toList());
     }
 
