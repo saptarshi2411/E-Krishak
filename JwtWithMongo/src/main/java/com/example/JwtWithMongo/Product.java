@@ -17,9 +17,9 @@ public class Product {
     private String description;
 
 
-    private byte[] imageData;  // to store the image data
-    private String imageName;   // to store the image name
-    private String imageType;   // to store the image type (e.g., "image/jpeg")
+    private byte[] imageData;  
+    private String imageName;   
+    private String imageType;   
 
 
     public Product() {
