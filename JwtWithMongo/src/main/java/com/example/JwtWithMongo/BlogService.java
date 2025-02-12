@@ -23,7 +23,7 @@ public class BlogService {
     }
 
     public Blog getBlogById(int randomId) {
-        return repo.findByRandomId(randomId).orElse(null);  // Use randomId here
+        return repo.findByRandomId(randomId).orElse(null);  
     }
 
 
