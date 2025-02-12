@@ -29,15 +29,15 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable()) // Disable CSRF
-                .cors(Customizer.withDefaults()) // Enable CORS
+                .csrf(csrf -> csrf.disable()) 
+                .cors(Customizer.withDefaults()) 
                 .authorizeHttpRequests(request -> request
                         .requestMatchers("/register", "/login","/forgot-password","/verify-otp","/reset-password","/weather/**").permitAll()
                         .requestMatchers("/allProducts","/admin/**").hasRole("ADMIN")
                         .requestMatchers("/wishlist/**").hasRole("USER")
-                        .requestMatchers("/updateUser/**", "/deleteUser/**").hasAnyRole( "ADMIN") // Allow both roles
+                        .requestMatchers("/updateUser/**", "/deleteUser/**").hasAnyRole( "ADMIN") 
                         .requestMatchers("/categoryProducts/**").authenticated()
-                        .anyRequest().authenticated()) // All other requests need authentication
+                        .anyRequest().authenticated()) 
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
