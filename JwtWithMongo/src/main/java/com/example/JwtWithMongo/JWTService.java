@@ -33,9 +33,9 @@ public class JWTService {
     }
 
     public String generateToken(String username, List<String> roles) {
-        // Handle null roles
+        
         if (roles == null || roles.isEmpty()) {
-            roles = List.of("USER"); // Default role if none provided
+            roles = List.of("USER"); 
         }
 
         List<String> formattedRoles = roles.stream()
@@ -48,7 +48,7 @@ public class JWTService {
                 .setClaims(claims)
                 .setSubject(username)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 60 * 60 * 1000)) // 1 hour expiration
+                .setExpiration(new Date(System.currentTimeMillis() + 60 * 60 * 1000)) 
                 .signWith(getKey())
                 .compact();
     }
