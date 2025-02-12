@@ -23,7 +23,7 @@ public class NewsService {
     private String apikey;
 
     public News findNews() {
-        // Retrieve the API URL from the cache and replace placeholders
+        
         String finalApi = appCache.getAppCache().get("news_api")
                 .replace("<apikey>", apikey);
 
