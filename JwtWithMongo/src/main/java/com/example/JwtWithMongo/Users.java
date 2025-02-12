@@ -15,8 +15,8 @@ public class Users {
     private ObjectId id;
     private String email;
     private String username;
-    private String password; // Assuming you have a password field
-    private List<String> roles; // List of roles associated with the user
+    private String password; 
+    private List<String> roles; 
     private String address;
     private Long mobileno;
 
@@ -25,13 +25,13 @@ public class Users {
 
 
     @DBRef
-    private List<Product> products = new ArrayList<>(); // Initialize as an empty list
+    private List<Product> products = new ArrayList<>(); 
 
     @DBRef
-    private List<WishList> wishlists = new ArrayList<>(); // Initialize as an empty list
+    private List<WishList> wishlists = new ArrayList<>(); 
 
     @DBRef
-    private List<Blog> blogs = new ArrayList<>(); // Initialize as an empty list
+    private List<Blog> blogs = new ArrayList<>(); 
 
 
 
