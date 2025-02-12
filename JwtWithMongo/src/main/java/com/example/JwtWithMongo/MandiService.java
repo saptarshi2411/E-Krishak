@@ -15,11 +15,11 @@ public class MandiService {
     }
 
     public List<MandiPrice> getCategoryProducts(String category) {
-        return repo.findByCategory(category); // Directly return the result of findByCategory
+        return repo.findByCategory(category); 
     }
 
     public List<MandiPrice> getPlace(String mandiPlace) {
-        return repo.findByPlace(mandiPlace); // Directly return the result of findByCategory
+        return repo.findByPlace(mandiPlace); 
     }
 
     public MandiPrice addMandiPrice(MandiPrice mandiPrice) {
