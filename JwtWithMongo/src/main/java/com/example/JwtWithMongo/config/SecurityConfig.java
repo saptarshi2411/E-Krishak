@@ -32,7 +32,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable()) 
                 .cors(Customizer.withDefaults()) 
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers("/register", "/login","/forgot-password","/verify-otp","/reset-password","/weather/**").permitAll()
+                        .requestMatchers("/register", "/login","/forgot-password","/weather/**").permitAll()
                         .requestMatchers("/allProducts","/admin/**").hasRole("ADMIN")
                         .requestMatchers("/wishlist/**").hasRole("USER")
                         .requestMatchers("/updateUser/**", "/deleteUser/**").hasAnyRole( "ADMIN") 
