@@ -50,8 +50,6 @@ public class BlogController {
             blog.setTitle(title);
             blog.setContent(content);
             blog.setCategory(category);
-
-
             if (image != null && !image.isEmpty()) {
                 blog.setImageData(image.getBytes());
             }
@@ -59,12 +57,8 @@ public class BlogController {
 
             int randomId = (int) (Math.random() * 1000000); // Random number as ID
             blog.setRandomId(randomId);
-
-            // Get the username of the authenticated user
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-            String username = authentication.getName();
-
-            // Save the blog
+            String username = authentication.getName();   
             service.addBlog(blog, username);
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (IOException e) {
