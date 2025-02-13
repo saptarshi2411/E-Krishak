@@ -53,7 +53,7 @@ public class Weather {
         private int timezone;
         private Coord coord;
 
-        // Getters and Setters
+    
         public int getId() {
             return id;
         }
