@@ -42,7 +42,7 @@ public class UserService {
                 new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
 
         if (authentication.isAuthenticated()) {
-            Users authenticatedUser = repo.findByUsername(user.getUsername()); // Ensure you fetch the user from DB
+            Users authenticatedUser = repo.findByUsername(user.getUsername()); 
             if (authenticatedUser != null && authenticatedUser.getRoles() != null) {
                 return jwtservice.generateToken(authenticatedUser.getUsername(), authenticatedUser.getRoles());
             }
