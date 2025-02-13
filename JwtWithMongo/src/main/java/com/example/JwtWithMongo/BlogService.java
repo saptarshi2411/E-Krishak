@@ -57,21 +57,6 @@ public class BlogService {
         return user.getBlogs();
     }
 
-    public List<Blog> getCategoryBlogs(String category) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName();
-
-        Users user = userRepo.findByUsername(username);
-        Set<String> userBlogIds = user.getBlogs().stream()
-                .map(Blog::getProdId)
-                .collect(Collectors.toSet());
-
-        List<Blog> categoryBlogs = repo.findByCategory(category);
-        return categoryBlogs.stream()
-                .filter(blog -> !userBlogIds.contains(blog.getProdId()))
-                .collect(Collectors.toList());
-    }
-
     public void deleteBlog(int randomId) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
