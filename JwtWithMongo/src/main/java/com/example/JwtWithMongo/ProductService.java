@@ -76,7 +76,7 @@ public class ProductService {
 
             for (Users userWithProduct : usersWithProduct) {
                 userWithProduct.getProducts().removeIf(p -> p.getProdId() == product.getProdId());
-                userRepo.save(userWithProduct); // Save the updated user to MongoDB
+                userRepo.save(userWithProduct); 
             }
 
 
