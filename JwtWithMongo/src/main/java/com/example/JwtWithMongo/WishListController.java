@@ -18,7 +18,6 @@ public class WishListController {
 
     @GetMapping("/wishlist")
     public List<Product> getProducts() {
-        // Get the currently authenticated user
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
 
