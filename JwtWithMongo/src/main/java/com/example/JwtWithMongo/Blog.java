@@ -27,7 +27,7 @@ public class Blog {
         this.randomId = randomId;
     }
 
-    // Getters and Setters
+    
     public String getProdId() { return prodId; }
     public void setProdId(String prodId) { this.prodId = prodId; }
     public String getTitle() { return title; }
