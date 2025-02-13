@@ -55,7 +55,7 @@ public class BlogController {
             }
 
 
-            int randomId = (int) (Math.random() * 1000000); // Random number as ID
+            int randomId = (int) (Math.random() * 1000000); 
             blog.setRandomId(randomId);
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             String username = authentication.getName();   
@@ -64,12 +64,6 @@ public class BlogController {
         } catch (IOException e) {
             return new ResponseEntity<>("Failed to upload image", HttpStatus.INTERNAL_SERVER_ERROR);
         }
-    }
-
-    @GetMapping("/categoryBlogs/{category}")
-    public ResponseEntity<List<Blog>> categoryBlogs(@PathVariable String category) {
-        List<Blog> categoryBlogs = service.getCategoryBlogs(category);
-        return new ResponseEntity<>(categoryBlogs, HttpStatus.OK);
     }
 
     @GetMapping("/blogs/{randomId}")
