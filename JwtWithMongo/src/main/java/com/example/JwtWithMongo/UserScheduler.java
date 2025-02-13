@@ -16,7 +16,7 @@ public class UserScheduler {
     private UserRepo userRepo;
 
 
-    @Scheduled(cron = "0 0 0/3 * * *")  // Runs every 3 days later  , */10 * * * * *    - for 10 sec
+    @Scheduled(cron = "0 0 0/3 * * *")  
     public void sendScheduledEmail() {
 
         List<Users> allUsers = userRepo.findAll();
