@@ -33,10 +33,6 @@ public class AdminController {
 
     @PostMapping("/create-admin-user")
     public ResponseEntity<?> createUser(@RequestBody Users user) {
-
-        if (user.getRoles() == null || user.getRoles().isEmpty()) {
-            user.setRoles(List.of("ADMIN"));
-        }
         adminService.saveAdmin(user);
         return ResponseEntity.ok(user);
 
