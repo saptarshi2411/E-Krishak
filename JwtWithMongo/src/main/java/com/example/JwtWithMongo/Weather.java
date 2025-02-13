@@ -263,7 +263,7 @@ public class Weather {
         private String description;
         private String icon;
 
-        // Getters and Setters
+        
         public int getId() {
             return id;
         }
