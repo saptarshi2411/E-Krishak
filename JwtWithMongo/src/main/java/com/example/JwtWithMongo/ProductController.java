@@ -75,7 +75,7 @@ public class ProductController {
             }
 
 
-            int prodId = (int) (Math.random() * 1000000); // Random number as ID
+            int prodId = (int) (Math.random() * 1000000); 
             product.setProdId(prodId);
 
 
