@@ -27,8 +27,8 @@ public class UserController {
     public ResponseEntity<Map<String, String>> login(@RequestBody Users user) {
         String token = service.verify(user);
         Map<String, String> response = new HashMap<>();
-        response.put("token", token); // Wrap the token in an object
-        return ResponseEntity.ok(response); // Return as a ResponseEntity
+        response.put("token", token); 
+        return ResponseEntity.ok(response); 
     }
 
 
